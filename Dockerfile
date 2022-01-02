@@ -8,7 +8,8 @@ patch perl-modules python2.7-dev rsync ruby sdcc subversion unzip util-linux \
 wget xsltproc zlib1g-dev zlib1g-dev -y'
 
 RUN mkdir /workspace
-RUN cd /workspace && git clone https://github.com/gl-inet/sdk.git
-RUN cd /workspace && ./download.sh siflower-1806
+WORKDIR /workspace
+RUN git clone https://github.com/gl-inet/sdk.git
+RUN cd sdk && ./download.sh siflower-1806
 
-CMD cd /workspace && /bin/bash
+CMD cd /workspace/sdk/sdk/1806/siflower && /bin/bash

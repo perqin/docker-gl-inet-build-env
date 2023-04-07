@@ -1,7 +1,9 @@
 FROM ubuntu:20.04
 
 RUN apt update && apt upgrade -y
-RUN apt install -y build-essential libncurses5-dev gawk git libssl-dev gettext zlib1g-dev swig unzip time rsync python3 python3-setuptools python3-yaml
+RUN DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC /bin/bash -c 'apt install \
+build-essential libncurses5-dev gawk git libssl-dev gettext zlib1g-dev swig \
+unzip time rsync python3 python3-setuptools python3-yaml -y'
 
 RUN mkdir /workspace
 WORKDIR /workspace

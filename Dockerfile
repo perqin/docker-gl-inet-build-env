@@ -1,15 +1,9 @@
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 
 RUN apt update && apt upgrade -y
-RUN DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC /bin/bash -c 'apt install \
-asciidoc bash bc binutils bzip2 fastjar flex gawk gcc genisoimage gettext git \
-intltool jikespg libgtk2.0-dev libncurses5-dev libssl1.0-dev make mercurial \
-patch perl-modules python2.7-dev rsync ruby sdcc subversion unzip util-linux \
-wget xsltproc zlib1g-dev zlib1g-dev -y'
+RUN sudo apt install build-essential libncurses5-dev gawk git libssl-dev gettext zlib1g-dev swig unzip time rsync python3 python3-setuptools python3-yaml
 
 RUN mkdir /workspace
 WORKDIR /workspace
-RUN git clone https://github.com/gl-inet/sdk.git
-RUN cd sdk && ./download.sh siflower-1806
-
-CMD cd /workspace/sdk/sdk/1806/siflower && /bin/bash
+RUN git clone https://github.com/gl-inet/gl-infra-builder.git
+RUN cd /workspace/gl-infra-builder && /bin/bash

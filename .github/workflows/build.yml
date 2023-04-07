@@ -3,7 +3,7 @@ name: Build
 on:
   push:
     branches:
-      - 'master'
+      - 'mt2500'
 
 jobs:
   docker:
@@ -21,4 +21,4 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: perqin/gl-inet-build-env:latest
+          tags: perqin/gl-inet-build-env:mt2500
